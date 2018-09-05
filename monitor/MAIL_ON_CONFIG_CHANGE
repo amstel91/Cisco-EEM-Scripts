@@ -1,0 +1,8 @@
+event manager applet mail_cfg_chg
+ description "EEM script to trigger email on configuration change"
+ event syslog pattern ".*%SYS-5-CONFIG_I.*"
+ action 1.0 info type routername
+ action 1.1 cli command “enable”
+ action 1.2 cli command "show archive log config all"
+ action 1.3 mail server "{{mail_server_ip:string}}" to “{{to_email:string}}” from "{{from_email:string}}" subject "Config change on {{device_ip:string}}" body "$_cli_result"
+ action 1.4 cli command "clear archive log config force"
