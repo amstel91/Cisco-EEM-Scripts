@@ -1,0 +1,4 @@
+event manager applet block_cli
+ description "EEM to block cli"
+ event cli pattern "{{cli:regex}}" sync no skip yes
+ action 1.0 syslog msg "{{syslog_message:string}}"
