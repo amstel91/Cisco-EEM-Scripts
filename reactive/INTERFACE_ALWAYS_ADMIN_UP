@@ -1,0 +1,7 @@
+event manager applet WatchInterface
+event syslog pattern "Interface {{interfaceName:string}}.* down" period 1
+action 2.0 cli command "enable"
+action 2.1 cli command "config t"
+action 2.2 cli command "interface {{interfaceName:string}}"
+action 2.3 cli command "no shutdown"
+action 3.0 syslog msg "Interface {{interfaceName:string}} was brought up via EEM"
