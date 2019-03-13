@@ -1,0 +1,6 @@
+event manager applet DETECT_CPU
+event syslog pattern ".*SYS-1-CPURISINGTHRESHOLD.*" 
+  action 1 cli command "en" 
+  action 2 cli command "show clock | append {{fileSystem:string}}:cpuinfo" 
+  action 3 cli command "show proc cpu sort | append {{fileSystem:string}}:cpuinfo" 
+  action 4 cli command "show line | append {{fileSystem:string}}:cpuinfo"
