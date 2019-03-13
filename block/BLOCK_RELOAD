@@ -1,0 +1,3 @@
+event manager applet BlockReload
+ event cli pattern "reload" sync no skip yes occurs 1
+ action 1.0 syslog msg "$_cli_msg has been blocked."
