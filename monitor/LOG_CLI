@@ -1,0 +1,3 @@
+event manager applet LOG_CLI
+ event cli pattern ".*" sync no skip no
+ action 1.0 syslog msg "$_cli_msg"
